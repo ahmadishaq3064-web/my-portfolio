@@ -1,403 +1,508 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ahmad Ishaq — Web Developer</title>
-<meta name="description" content="Ahmad Ishaq — Web Developer portfolio. PHP, MySQL, JavaScript, Java, C++.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<link rel="icon" type="image/png" href="images/logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahmad Ishaq — Web Developer</title>
+  <meta name="description" content="Ahmad Ishaq — Web Developer. Portfolio featuring PHP/MySQL projects, front-end work, and web development skills.">
+
+  <!-- Favicon: personal photo -->
+  <link rel="icon" type="image/png" href="assets/ahmad-avatar.png">
+
+  <!-- Google Fonts: Space Grotesk (headings), Inter (body), IBM Plex Mono (accents/labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="bg-grid"></div>
-<header class="site-header">
-  <nav class="nav container">
-    <a href="#top" class="logo">Ahmad Ishaq<span class="logo-dot">.</span><span class="cursor-blink">_</span></a>
 
+  <!-- ============ HEADER / NAVIGATION ============ -->
+  <header class="site-header">
     <input type="checkbox" id="nav-toggle" class="nav-toggle">
-    <label for="nav-toggle" class="hamburger" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </label>
 
-    <ul class="nav-links">
-      <li><a href="#about"><span class="idx">01</span>About</a></li>
-      <li><a href="#skills"><span class="idx">02</span>Skills</a></li>
-      <li><a href="#projects"><span class="idx">03</span>Projects</a></li>
-      <li><a href="#education"><span class="idx">04</span>Education</a></li>
-      <li><a href="#experience"><span class="idx">05</span>Experience</a></li>
-      <li><a href="#contact" class="nav-cta">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+    <div class="nav-pill">
+      <a href="#top" class="brand" aria-label="Ahmad Ishaq">
+        <span class="brand-plane brand-left" aria-hidden="true">AHMAD</span>
+        <span class="brand-plane brand-right" aria-hidden="true">iSHAQ</span>
+      </a>
 
-<main id="top">
-<section class="hero container" id="hero">
-    <div class="hero-copy">
-      <p class="eyebrow">// hello_world.init()</p>
-      <h1 class="hero-name">Ahmad Ishaq</h1>
-      <p class="hero-role">Web Developer</p>
-      <p class="hero-intro">
-        Seeking a challenging position in a growing organization where i can apply my skilss and knowledge, learn new technologies, and gain practical experience. Aiming to grow professionally while contributing to the success of the team and organization.
-      </p>
-      <div class="hero-actions">
-        <a href="https://drive.google.com/file/d/1nfZAWdAACU52Y1shLjFXQ5jNJsgNBSdK/view?usp=drive_link" class="btn btn-primary" download>
-          <span>Download CV</span>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1v9m0 0L4.5 6.5M8 10l3.5-3.5M2 12.5v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="#contact" class="btn btn-ghost">
-          <span>Contact Me</span>
-        </a>
-      </div>
-      <div class="hero-meta">
-        <span class="dot dot-online"></span>
-        Based in Gujranwala, Pakistan — open to remote &amp; on-site roles
-      </div>
+      <nav class="site-nav">
+        <a href="#about" class="active">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a href="#contact" class="btn btn-pill">Let's Talk</a>
+
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </label>
     </div>
 
-    <div class="hero-photo">
-      <div class="hero-photo__inner">
-        <img src="images/ahmad.jpeg" alt="Ahmad Ishaq">
-      </div>
-    </div>
-  </section>
-<section class="section" id="about">
-    <div class="container">
-      <p class="section-tab">01 — About</p>
-      <h2 class="section-title">About Me</h2>
+    <!-- Mobile dropdown menu -->
+    <nav class="mobile-nav">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-      <div class="about-grid">
-        <div class="about-text">
-          <p>
-            I'm a web developer based in Gujranwala, Pakistan, currently completing
-            an <strong>ADP in Information Technology at IISAT University</strong> (2023–2025).
-            My work centers on the PHP + MySQL stack — I've built role-based systems
-            with proper CRUD operations, admin dashboards, and AJAX-driven interfaces
-            that don't need a page reload to feel responsive.
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <p class="eyebrow">I am Ahmad Ishaq</p>
+          <h1 class="hero-name"><span style="color: #6ee7a0;">Web</span> Developer<br>&amp; <span style="color: #6ee7a0;">Problem</span> Solver</h1>
+          <p class="hero-intro">
+            I build clean, functional web applications with PHP, MySQL and modern
+            front-end fundamentals — turning practical ideas into working,
+            reliable software.
           </p>
-          <p>
-            What I enjoy most is the logic underneath the interface: designing a
-            database schema that makes sense, writing queries that scale past a demo,
-            and structuring an admin panel so a non-technical user can actually manage
-            it. I pair that with a front end built carefully in HTML and CSS — no
-            shortcuts, no unnecessary bloat.
-          </p>
-          <p>
-            Outside of coursework projects, I spend my time solving problems for fun,
-            reading through documentation, and staying in shape — I think clear code
-            and a clear head come from the same discipline.
-          </p>
-
-          <div class="about-highlights">
-            <div class="highlight-card">
-              <span class="highlight-card__label">Education</span>
-              <span class="highlight-card__value">ADP, Information Technology</span>
-              <span class="highlight-card__sub">IISAT University · 2023 – 2025</span>
-            </div>
-            <div class="highlight-card">
-              <span class="highlight-card__label">Focus</span>
-              <span class="highlight-card__value">PHP · MySQL · CRUD Systems</span>
-              <span class="highlight-card__sub">Backend-leaning full stack</span>
-            </div>
-            <div class="highlight-card">
-              <span class="highlight-card__label">Languages</span>
-              <span class="highlight-card__value">English · Urdu · Punjabi</span>
-              <span class="highlight-card__sub">Comfortable working in all three</span>
-            </div>
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-solid">View Projects</a>
+            <a href="#contact" class="btn btn-ghost-dark">Get in Touch</a>
           </div>
         </div>
 
-        <div class="hero-visual">
-          <div class="code-window">
-            <div class="code-window__bar">
-              <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
-              <span class="code-window__title">ahmad.js</span>
+        <div class="hero-media">
+          <div class="hero-frame">
+            <img src="assets/ahmad-hero.jpeg" alt="Ahmad Ishaq" class="hero-photo">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOCUS / WHAT I DO ============ -->
+    <section id="focus" class="section">
+      <div class="container">
+        <h2 class="section-title center">What I Do</h2>
+        <p class="section-sub center">Building reliable, database-driven web applications</p>
+
+        <div class="focus-grid">
+          <div class="focus-card">
+            <h3>Backend Development</h3>
+            <p>Build server-side web applications with PHP, database integration, CRUD operations, and AJAX-driven data handling.</p>
+            <div class="pill-row">
+              <span class="pill">PHP</span>
+              <span class="pill">CRUD</span>
+              <span class="pill">AJAX</span>
+              <span class="pill">Server-Side Logic</span>
             </div>
-            <div class="code-window__body">
-<pre><code><span class="ln">1</span><span class="tok-key">const</span> <span class="tok-var">developer</span> <span class="tok-punc">=</span> <span class="tok-punc">{</span>
-<span class="ln">2</span>  <span class="tok-prop">name</span><span class="tok-punc">:</span> <span class="tok-str">"Ahmad Ishaq"</span><span class="tok-punc">,</span>
-<span class="ln">3</span>  <span class="tok-prop">role</span><span class="tok-punc">:</span> <span class="tok-str">"Web Developer"</span><span class="tok-punc">,</span>
-<span class="ln">4</span>  <span class="tok-prop">stack</span><span class="tok-punc">:</span> <span class="tok-punc">[</span><span class="tok-str">"PHP"</span><span class="tok-punc">,</span> <span class="tok-str">"MySQL"</span><span class="tok-punc">,</span> <span class="tok-str">"JS"</span><span class="tok-punc">]</span><span class="tok-punc">,</span>
-<span class="ln">5</span>  <span class="tok-prop">education</span><span class="tok-punc">:</span> <span class="tok-str">"ADP in IT"</span><span class="tok-punc">,</span>
-<span class="ln">6</span>  <span class="tok-prop">location</span><span class="tok-punc">:</span> <span class="tok-str">"Gujranwala, PK"</span><span class="tok-punc">,</span>
-<span class="ln">7</span>  <span class="tok-prop">available</span><span class="tok-punc">:</span> <span class="tok-bool">true</span><span class="tok-punc">,</span>
-<span class="ln">8</span>  <span class="tok-fn">hire</span><span class="tok-punc">()</span> <span class="tok-punc">{</span>
-<span class="ln">9</span>    <span class="tok-key">return</span> <span class="tok-str">"let's build something."</span><span class="tok-punc">;</span>
-<span class="ln">10</span>  <span class="tok-punc">}</span>
-<span class="ln">11</span><span class="tok-punc">};</span><span class="cursor-blink cursor-block"> </span></code></pre>
+          </div>
+          <div class="focus-card">
+            <h3>Frontend Development</h3>
+            <p>Create responsive and interactive interfaces using HTML, CSS, JavaScript, Bootstrap, and jQuery.</p>
+            <div class="pill-row">
+              <span class="pill">HTML5</span>
+              <span class="pill">CSS3</span>
+              <span class="pill">jQuery</span>
+              <span class="pill">JavaScript</span>
+              <span class="pill">Bootstrap</span>
+            </div>
+          </div>
+          <div class="focus-card">
+            <h3>Database Design</h3>
+            <p>Design and manage relational data using MySQL, database operations, queries, and structured data relationships.</p>
+            <div class="pill-row">
+              <span class="pill">MySQL</span>
+              <span class="pill">Data Modeling</span>
+              <span class="pill">SQL</span>
+              <span class="pill">Database Design</span>
+            </div>
+          </div>
+          <div class="focus-card">
+            <h3>Laravel Applications</h3>
+            <p>Develop structured Laravel applications using routes, controllers, validation, database integration, and API-driven functionality.</p>
+            <div class="pill-row">
+              <span class="pill">Laravel</span>
+              <span class="pill">Routing</span>
+              <span class="pill">Controllers</span>
+              <span class="pill">Validation</span>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-<section class="section section--alt" id="skills">
-    <div class="container">
-      <p class="section-tab">skills.json</p>
-      <h2 class="section-title">Skills &amp; Tools</h2>
-      <p class="section-sub">The languages, frameworks, and tools I build with.</p>
+    </section>
 
-      <div class="skills-grid">
-
-        <div class="skill-card">
-          <span class="skill-card__badge">HTML</span>
-          <h3>HTML5</h3>
-          <div class="skill-bar"><span style="width:92%"></span></div>
-        </div>
-
-        <div class="skill-card">
-          <span class="skill-card__badge">CSS</span>
-          <h3>CSS3</h3>
-          <div class="skill-bar"><span style="width:90%"></span></div>
-        </div>
-
-        <div class="skill-card">
-          <span class="skill-card__badge">JS</span>
-          <h3>JavaScript</h3>
-          <div class="skill-bar"><span style="width:55%"></span></div>
-        </div>
-
-        <div class="skill-card">
-          <span class="skill-card__badge">PHP</span>
-          <h3>PHP</h3>
-          <div class="skill-bar"><span style="width:85%"></span></div>
-        </div>
-
-        <div class="skill-card">
-          <span class="skill-card__badge">CRUD</span>
-          <h3>PHP CRUD</h3>
-          <div class="skill-bar"><span style="width:85%"></span></div>
-        </div>
-
-        <div class="skill-card">
-          <span class="skill-card__badge">AJAX</span>
-          <h3>PHP AJAX</h3>
-          <div class="skill-bar"><span style="width:75%"></span></div>
-        </div>
-
-        <div class="skill-card">
-          <span class="skill-card__badge">SQL</span>
-          <h3>MySQL</h3>
-          <div class="skill-bar"><span style="width:85%"></span></div>
-        </div>
-
-        <div class="skill-card">
-          <span class="skill-card__badge">SQL</span>
-          <h3>SQL</h3>
-          <div class="skill-bar"><span style="width:80%"></span></div>
-        </div>
-
-        <div class="skill-card">
-          <span class="skill-card__badge">LV</span>
-          <h3>Laravel</h3>
-          <div class="skill-bar"><span style="width:50%"></span></div>
-        </div>
-
-        <div class="skill-card">
-          <span class="skill-card__badge">JV</span>
-          <h3>Java</h3>
-          <div class="skill-bar"><span style="width:55%"></span></div>
-        </div>
-
-        <div class="skill-card">
-          <span class="skill-card__badge">C++</span>
-          <h3>C++</h3>
-          <div class="skill-bar"><span style="width:60%"></span></div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-<section class="section" id="projects">
-    <div class="container">
-      <p class="section-tab">projects/</p>
-      <h2 class="section-title">Projects</h2>
-      <p class="section-sub">A few things I've built end to end.</p>
-
-      <div class="projects-grid">
-
-        <article class="project-card">
-          <div class="project-card__top">
-            <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
-            <span class="project-card__url">news-system/index.php</span>
-          </div>
-          <div class="project-card__body">
-            <h3>News Management System</h3>
-            <p>
-              A dynamic, role-based news platform for two kinds of users — readers
-              and admins. Admins get a full dashboard to manage articles, categorize
-              content, and monitor user activity; regular users can create, edit, and
-              delete their own posts.
-            </p>
-            <ul class="project-card__features">
-              <li>Role-based access control (user / admin)</li>
-              <li>Full CRUD for posts, with category tagging</li>
-              <li>Admin dashboard for user &amp; content management</li>
-            </ul>
-            <div class="tech-pills">
-              <span>PHP</span><span>MySQL</span><span>HTML5</span><span>CSS3</span><span>CRUD</span>
-            </div>
-            <a href="https://github.com/ahmadishaq3064-web/NEWS-Management-System" class="project-link">View Details <span>→</span></a>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-card__top">
-            <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
-            <span class="project-card__url">todo-list/index.php</span>
-          </div>
-          <div class="project-card__body">
-            <h3>To-Do List — Task Manager</h3>
-            <p>
-              A simple, user-friendly task manager built to make daily task tracking
-              painless — create tasks, mark them complete, and remove what's done,
-              all through a clean, intuitive interface.
-            </p>
-            <ul class="project-card__features">
-              <li>Create, update, complete, and delete tasks</li>
-              <li>Persistent storage via MySQL</li>
-              <li>Minimal, distraction-free front end</li>
-            </ul>
-            <div class="tech-pills">
-              <span>PHP</span><span>MySQL</span><span>HTML5</span><span>CSS3</span>
-            </div>
-            <a href="https://to-do-list-ahmad-e9ad.vercel.app/" class="project-link">View Project <span>→</span></a>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-card__top">
-            <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
-            <span class="project-card__url">portfolio/index.html</span>
-          </div>
-          <div class="project-card__body">
-            <h3>Portfolio Website</h3>
-            <p>
-              A responsive personal portfolio built to showcase projects, skills, and
-              education with a professional, well-organized layout — the site you're
-              looking at now started from this idea.
-            </p>
-            <ul class="project-card__features">
-              <li>Fully responsive, mobile-first layout</li>
-              <li>Hand-written semantic HTML5 &amp; CSS3</li>
-              <li>No frameworks — pure front-end craftsmanship</li>
-            </ul>
-            <div class="tech-pills">
-              <span>HTML5</span><span>CSS3</span><span>Responsive Design</span>
-            </div>
-            <a href="https://github.com/ahmadishaq3064-web/my-portfolio" class="project-link">View Details <span>→</span></a>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-<section class="section" id="education">
-    <div class="container">
-      <p class="section-tab">education.yml</p>
-      <h2 class="section-title">Education</h2>
-
-      <div class="edu-grid">
-        <div class="edu-card edu-card--current">
-          <span class="edu-card__tag">Current</span>
-          <h3>ADP in Information Technology</h3>
-          <p class="edu-card__org">IISAT University</p>
-          <p class="edu-card__date">11/2023 — 08/2025</p>
-        </div>
-        <div class="edu-card">
-          <h3>Intermediate</h3>
-          <p class="edu-card__org">ACE College</p>
-          <p class="edu-card__date">05/2020 — 05/2022</p>
-        </div>
-        <div class="edu-card">
-          <h3>Matriculation</h3>
-          <p class="edu-card__org">The Pakistan School Of Science</p>
-          <p class="edu-card__date">05/2018 — 05/2020</p>
-        </div>
-      </div>
-    </div>
-  </section>
-<section class="section" id="experience">
-    <div class="container">
-      <p class="section-tab">experience.log</p>
-      <h2 class="section-title">Experience</h2>
-
-      <div class="exp-grid">
-        <div class="exp-card exp-card--current">
-          <span class="exp-card__tag">Currently Working</span>
-          <h3>Laravel Intern</h3>
-          <p class="exp-card__org">Aurelium Soft</p>
-          <p class="exp-card__desc">
-            Gaining practical, hands-on experience in Laravel, PHP, and MySQL —
-            working on real CRUD operations, AJAX-driven features, and everyday
-            web development tasks.
-          </p>
-          <div class="tech-pills">
-            <span>Laravel</span><span>PHP</span><span>MySQL</span><span>CRUD</span><span>AJAX</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-<section class="section section--alt" id="contact">
-    <div class="container contact-grid">
-      <div class="contact-copy">
-        <p class="section-tab">contact.sh</p>
-        <h2 class="section-title">Let's Work Together</h2>
-        <p class="section-sub">
-          Looking for a junior web developer to join your team? I'd love to hear
-          about it — reach out through any of these.
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title center">About Me</h2>
+        <p class="about-text center">
+          I'm a web developer based in Gujranwala, Pakistan, with a strong interest in building
+          practical, role-based web applications — from content management systems to everyday
+          productivity tools. My work leans on PHP and MySQL for the back end, paired with clean
+          HTML and CSS on the front end, and I enjoy the problem-solving side of development as
+          much as the building itself.
         </p>
-</div>
-        <ul class="contact-list">
-          <li>
-            <span class="contact-list__icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 5h18v14H3V5Z" stroke="currentColor" stroke-width="1.5"/><path d="m3 6 9 7 9-7" stroke="currentColor" stroke-width="1.5"/></svg>
-            </span>
-            <div>
-              <span class="contact-list__label">Email</span>
-              <a href="mailto:ahmadishaq3064@gmail.com">ahmadishaq3064@gmail.com</a>
+
+        <div class="about-actions">
+          <a href="https://drive.google.com/file/d/1nfZAWdAACU52Y1shLjFXQ5jNJsgNBSdK/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-solid">Download CV</a>
+        </div>
+
+        <h3 class="approach-title center">My Approach</h3>
+        <div class="approach-row">
+          <div class="approach-step">
+            <span class="step-num">01</span>
+            <span>Understand the problem clearly</span>
+          </div>
+          <div class="approach-step">
+            <span class="step-num">02</span>
+            <span>Build with clean, structured code</span>
+          </div>
+          <div class="approach-step">
+            <span class="step-num">03</span>
+            <span>Test, refine and ship</span>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat">
+            <span class="stat-num">5</span>
+            <span class="stat-label">Projects Built</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">1</span>
+            <span class="stat-label">Certification Earned</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">6+</span>
+            <span class="stat-label">Core Technologies</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section id="skills" class="section">
+      <div class="container">
+        <h2 class="section-title center">Skills</h2>
+        <p class="section-sub center">Technologies I build with</p>
+
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3>Core Skills</h3>
+            <div class="pill-row">
+              <span class="pill">PHP</span>
+              <span class="pill">PHP CRUD</span>
+              <span class="pill">PHP AJAX</span>
+              <span class="pill">API</span>
+              <span class="pill">AJAX</span>
             </div>
-          </li>
-          <li>
-            <span class="contact-list__icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v4c0 1-1 2-2 2C9.5 21 3 14.5 3 6c0-1 1-2 2-2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
-            </span>
-            <div>
-              <span class="contact-list__label">Phone</span>
-              <a href="tel:+923116979300">+92 302 3011312</a>
+          </div>
+          <div class="skill-card">
+            <h3>Languages</h3>
+            <div class="pill-row">
+              <span class="pill">HTML</span>
+              <span class="pill">CSS</span>
+              <span class="pill">JavaScript</span>
+              <span class="pill">Java</span>
+              <span class="pill">C++</span>
             </div>
-          </li>
-          <li>
-            <span class="contact-list__icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4.98 3.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4ZM3 8.98h4v11.52H3V8.98Zm7 0h3.8v1.57h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.76v6.14h-4v-5.44c0-1.3-.02-2.96-1.8-2.96-1.82 0-2.1 1.4-2.1 2.86v5.54h-4V8.98Z" fill="currentColor"/></svg>
-            </span>
-            <div>
-              <span class="contact-list__label">LinkedIn</span>
-              <a href="https://www.linkedin.com/in/ahmad-ishaq-26b673393?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener">linkedin.com/in/ahmad-ishaq</a>
+          </div>
+          <div class="skill-card">
+            <h3>Frameworks &amp; Database</h3>
+            <div class="pill-row">
+              <span class="pill">Laravel</span>
+              <span class="pill">MySQL</span>
+              <span class="pill">Bootstrap</span>
+              <span class="pill">jQuery</span>
             </div>
-          </li>
-          <li>
-            <span class="contact-list__icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.15-1.11-1.46-1.11-1.46-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.93 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.4 9.4 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.83-2.34 4.68-4.57 4.92.36.31.68.92.68 1.86v2.76c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" fill="currentColor"/></svg>
-            </span>
-            <div>
-              <span class="contact-list__label">GitHub</span>
-              <a href="https://github.com/ahmadishaq3064-web?tab=overview&from=2026-07-01&to=2026-07-31" target="_blank" rel="noopener">github.com/ahmadishaq</a>
+          </div>
+          <div class="skill-card">
+            <h3>Tools</h3>
+            <div class="pill-row">
+              <span class="pill">Git</span>
+              <span class="pill">GitHub</span>
+              <span class="pill">Dreamweaver</span>
+              <span class="pill">Chrome DevTools</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section id="projects" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title center">Projects</h2>
+        <p class="section-sub center">A few things I've built</p>
+
+        <div class="projects-marquee">
+          <div class="projects-track">
+
+          <article class="project-card">
+            <h3 class="project-title">News Management System</h3>
+            <p class="project-desc">
+              A dynamic news management platform where users and administrators can manage news content. It includes news categorization, user management, role-based access, CRUD operations, and an administrative dashboard for content and user management.
+            </p>
+            <div class="pill-row">
+              <span class="pill">PHP</span>
+              <span class="pill">HTML5</span>
+              <span class="pill">CSS3</span>
+              <span class="pill">MySQL</span>
+              <span class="pill">CRUD</span>
+              <span class="pill">AJAX</span>
+              <span class="pill">Role-Based Access</span>
+              <span class="pill">Admin Dashboard</span>
+            </div>
+            <a href="https://github.com/ahmadishaq3064-web/NEWS-Management-System" target="_blank" rel="noopener" class="project-link">View on GitHub &nearr;</a>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-title">To-Do List &mdash; Task Manager</h3>
+            <p class="project-desc">
+              A simple task management web application that allows users to create, update, complete, and delete tasks while tracking their task progress through an intuitive interface.
+            </p>
+            <div class="pill-row">
+              <span class="pill">HTML5</span>
+              <span class="pill">CSS3</span>
+              <span class="pill">JAVASCRIPT</span>
+            </div>
+            <a href="https://github.com/ahmadishaq3064-web/TO-DO-List" target="_blank" rel="noopener" class="project-link">View on GitHub &nearr;</a>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-title">Portfolio Website</h3>
+            <p class="project-desc">
+             A responsive personal portfolio website designed to showcase web development skills, projects, and professional experience using a clean frontend structure.
+            </p>
+            <div class="pill-row">
+              <span class="pill">HTML5</span>
+              <span class="pill">CSS3</span>
+              <span class="pill">JAVASCRIPT</span>
+              <span class="pill">Responsive Design</span>
+            </div>
+            <a href="https://github.com/ahmadishaq3064-web/my-portfolio" target="_blank" rel="noopener" class="project-link">View on GitHub &nearr;</a>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-title">Form Project &mdash; Laravel</h3>
+            <p class="project-desc">
+              A Laravel-based form management application that handles multiple form inputs, server-side validation, MySQL database operations, and dynamic country selection through API integration. It uses Laravel routes and controllers to process and manage submitted data.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Laravel</span>
+              <span class="pill">PHP</span>
+              <span class="pill">MySQL</span>
+              <span class="pill">API Integration</span>
+              <span class="pill">Validations</span>
+              <span class="pill">Authentications</span>
+              <span class="pill">Chrome DevTools</span>
+            </div>
+            <a href="https://github.com/ahmadishaq3064-web/form-project" target="_blank" rel="noopener" class="project-link">View on GitHub &nearr;</a>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-title">Form Project &mdash; PHP &amp; AJAX</h3>
+            <p class="project-desc">
+              A responsive PHP form application with client-side and server-side validation, database operations, dynamic country selection through a Countries API, and AJAX-based data submission and table updates without page reloads.
+            </p>
+            <div class="pill-row">
+              <span class="pill">PHP</span>
+              <span class="pill">AJAX</span>
+              <span class="pill">JavaScript</span>
+              <span class="pill">jQuery</span>
+            </div>
+            <a href="https://github.com/ahmadishaq3064-web/form-project-php" target="_blank" rel="noopener" class="project-link">View on GitHub &nearr;</a>
+          </article>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EDUCATION & CERTIFICATES ============ -->
+    <section id="education" class="section">
+      <div class="container">
+        <div class="edu-cert-grid">
+
+          <div class="edu-cert-col">
+            <h2 class="section-title center">Education</h2>
+
+            <ul class="timeline">
+              <li class="timeline-item">
+                <div class="timeline-dates">2026 &ndash; Present</div>
+                <div class="timeline-content">
+                  <h3 class="timeline-title">BS Information Technology (Lateral)</h3>
+                  <p class="timeline-org">Virtual University</p>
+                  <span class="status-badge">Currently Studying</span>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <div class="timeline-dates">2023 &ndash; 2025</div>
+                <div class="timeline-content">
+                  <h3 class="timeline-title">ADP Information Technology</h3>
+                  <p class="timeline-org">International Institute of Science, Art and Technology (IISAT)</p>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <div class="timeline-dates">5/2020 &ndash; 5/2022</div>
+                <div class="timeline-content">
+                  <h3 class="timeline-title">Intermediate</h3>
+                  <p class="timeline-org">ACE College</p>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <div class="timeline-dates">5/2018 &ndash; 5/2020</div>
+                <div class="timeline-content">
+                  <h3 class="timeline-title">Matriculation</h3>
+                  <p class="timeline-org">The Pakistan School Of Science</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div id="certificates" class="edu-cert-col">
+            <h2 class="section-title center">Certificates</h2>
+
+            <div class="cert-card">
+              <h3 class="cert-title">Web Designing Course</h3>
+              <p class="cert-org">Christian Computer Institute &mdash; Gujranwala Education Centre</p>
+              <p class="cert-meta">Attended 05.08.2022 &ndash; 05.10.2022 &nbsp;&bull;&nbsp; Issued 15.10.2022 &nbsp;&bull;&nbsp; Grade A+</p>
+              <div class="pill-row">
+                <span class="pill">HTML5</span>
+                <span class="pill">CSS3</span>
+                <span class="pill">Bootstrap 4.0</span>
+                <span class="pill">Dreamweaver</span>
+                <span class="pill">Design Layout</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section id="experience" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title center">Experience</h2>
+
+        <ul class="timeline">
+          <li class="timeline-item timeline-item-wide">
+            <div class="timeline-dates">January 2026 &ndash; Present</div>
+            <div class="timeline-content">
+              <h3 class="timeline-title">Laravel Intern</h3>
+              <p class="timeline-org">Aurelium Soft</p>
+              <span class="status-badge">Currently Working</span>
+              <p class="timeline-desc">
+                Gaining practical, hands-on experience in Laravel, PHP, and MySQL &mdash; working on
+                real CRUD operations, AJAX-driven features, and everyday web development tasks.
+              </p>
+              <div class="pill-row">
+                <span class="pill">Laravel</span>
+                <span class="pill">PHP</span>
+                <span class="pill">MySQL</span>
+                <span class="pill">CRUD</span>
+                <span class="pill">AJAX</span>
+                <span class="pill">jQuery</span>
+                <span class="pill">JavaScript</span>
+                <span class="pill">API Integration</span>
+                <span class="pill">Validations</span>
+                <span class="pill">Chrome DevTools</span>
+                <span class="pill">HTML</span>
+                <span class="pill">CSS</span>
+                <span class="pill">Error Handling</span>
+              </div>
             </div>
           </li>
         </ul>
       </div>
+    </section>
 
-  </section>
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section-title center">Get in Touch</h2>
+        <p class="section-sub center">Feel free to reach out for opportunities or collaboration</p>
 
-</main>
-<footer class="site-footer">
-  <div class="container footer-inner">
-        <p class="footer-copy">© 2026 Ahmad Ishaq. Built with HTML5 &amp; CSS3 — no frameworks.</p>
-  </div>
-</footer>
+        <div class="contact-grid">
+          <a href="mailto:ahmadishaq3064@gmail.com" class="contact-card">
+            <span class="contact-label">Email</span>
+            <span class="contact-value">ahmadishaq3064@gmail.com</span>
+          </a>
+          <a href="tel:+923116979300" class="contact-card">
+            <span class="contact-label">Phone</span>
+            <span class="contact-value">+92 311 6979300</span>
+          </a>
+          <div class="contact-card contact-card-static">
+            <span class="contact-label">Location</span>
+            <span class="contact-value">Sialkot Bypass, Gujranwala, Pakistan</span>
+          </div>
+          <a href="https://github.com/ahmadishaq3064-web" target="_blank" rel="noopener" class="contact-card">
+            <span class="contact-label">GitHub</span>
+            <span class="contact-value">ahmadishaq3064-web</span>
+          </a>
+          <a href="https://www.linkedin.com/in/ahmad-ishaq-26b673393" target="_blank" rel="noopener" class="contact-card">
+            <span class="contact-label">LinkedIn</span>
+            <span class="contact-value">ahmad-ishaq</span>
+          </a>
+        </div>
+      </div>
+    </section>
 
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-name">Ahmad Ishaq</p>
+      <p class="footer-copy">&copy; 2026 Ahmad Ishaq.</p>
+    </div>
+  </footer>
+
+  <script>
+    /* Seamless projects marquee: the cards are repeated (hidden from assistive
+       tech and keyboard focus) so the loop never shows an empty gap. */
+    (function () {
+      var track = document.querySelector('.projects-track');
+      if (!track || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var cards = Array.prototype.slice.call(track.children);
+      var clones = [];
+
+      function build() {
+        clones.forEach(function (c) { c.remove(); });
+        clones = [];
+        track.classList.add('is-looping');
+
+        var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+        var first = cards[0], last = cards[cards.length - 1];
+        var setWidth = last.offsetLeft + last.offsetWidth - first.offsetLeft + gap;
+        var extraSets = Math.ceil(track.parentElement.clientWidth / setWidth);
+
+        for (var i = 0; i < extraSets; i++) {
+          cards.forEach(function (card) {
+            var clone = card.cloneNode(true);
+            clone.setAttribute('aria-hidden', 'true');
+            clone.setAttribute('inert', '');
+            track.appendChild(clone);
+            clones.push(clone);
+          });
+        }
+
+        track.style.setProperty('--marquee-shift', -setWidth + 'px');
+        track.style.setProperty('--marquee-duration', (setWidth / 60) + 's');
+      }
+
+      var timer;
+      window.addEventListener('resize', function () {
+        clearTimeout(timer);
+        timer = setTimeout(build, 150);
+      });
+      build();
+    })();
+  </script>
 </body>
 </html>
