@@ -147,7 +147,7 @@
         </p>
 
         <div class="about-actions">
-          <a href="https://drive.google.com/file/d/1nfZAWdAACU52Y1shLjFXQ5jNJsgNBSdK/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-solid">Download CV</a>
+          <button type="button" id="my-cv-btn" class="btn btn-solid">MY CV</button>
         </div>
 
         <h3 class="approach-title center">My Approach</h3>
@@ -242,6 +242,7 @@
           <div class="projects-track">
 
           <article class="project-card">
+            <img src="assets/news.jpg" alt="News Management System screenshots" class="project-image" loading="lazy">
             <h3 class="project-title">News Management System</h3>
             <p class="project-desc">
               A dynamic news management platform where users and administrators can manage news content. It includes news categorization, user management, role-based access, CRUD operations, and an administrative dashboard for content and user management.
@@ -260,6 +261,7 @@
           </article>
 
           <article class="project-card">
+            <img src="assets/to do.jpg" alt="To-Do List Task Manager screenshots" class="project-image" loading="lazy">
             <h3 class="project-title">To-Do List &mdash; Task Manager</h3>
             <p class="project-desc">
               A simple task management web application that allows users to create, update, complete, and delete tasks while tracking their task progress through an intuitive interface.
@@ -273,6 +275,7 @@
           </article>
 
           <article class="project-card">
+            <img src="assets/portfolio.jpg" alt="Portfolio Website screenshot" class="project-image" loading="lazy">
             <h3 class="project-title">Portfolio Website</h3>
             <p class="project-desc">
              A responsive personal portfolio website designed to showcase web development skills, projects, and professional experience using a clean frontend structure.
@@ -287,6 +290,7 @@
           </article>
 
           <article class="project-card">
+            <img src="assets/laravel.jpg" alt="Laravel form project screenshots" class="project-image" loading="lazy">
             <h3 class="project-title">Form Project &mdash; Laravel</h3>
             <p class="project-desc">
               A Laravel-based form management application that handles multiple form inputs, server-side validation, MySQL database operations, and dynamic country selection through API integration. It uses Laravel routes and controllers to process and manage submitted data.
@@ -304,17 +308,18 @@
           </article>
 
           <article class="project-card">
-            <h3 class="project-title">Form Project &mdash; PHP &amp; AJAX</h3>
+            <img src="assets/client-portfolio.jpg" alt="Clients portfolio template designs screenshots" class="project-image" loading="lazy">
+            <h3 class="project-title">Clients Portfolio</h3>
             <p class="project-desc">
-              A responsive PHP form application with client-side and server-side validation, database operations, dynamic country selection through a Countries API, and AJAX-based data submission and table updates without page reloads.
+              A collection of responsive portfolio website templates built for different client needs &mdash; personal, business, creative, photography, resume, and e-commerce &mdash; each with a unique, modern layout.
             </p>
             <div class="pill-row">
-              <span class="pill">PHP</span>
-              <span class="pill">AJAX</span>
-              <span class="pill">JavaScript</span>
-              <span class="pill">jQuery</span>
+              <span class="pill">HTML5</span>
+              <span class="pill">CSS3</span>
+              <span class="pill">Responsive Design</span>
+              <span class="pill">Multiple Templates</span>
             </div>
-            <a href="https://github.com/ahmadishaq3064-web/form-project-php" target="_blank" rel="noopener" class="project-link">View on GitHub &nearr;</a>
+            <a href="https://github.com/ahmadishaq3064-web/ahmer-portfolio" target="_blank" rel="noopener" class="project-link">View on GitHub &nearr;</a>
           </article>
 
           </div>
@@ -462,9 +467,56 @@
     </div>
   </footer>
 
+  <!-- ============ CV PREVIEW SCREEN ============ -->
+  <div id="cv-page" class="cv-page" hidden aria-hidden="true">
+    <div class="cv-page-header">
+      <div class="container cv-header-inner">
+        <span class="cv-page-title">My CV</span>
+        <div class="cv-header-actions">
+          <button type="button" id="cv-back-btn" class="btn btn-ghost-dark">&larr; Go Back</button>
+        </div>
+      </div>
+    </div>
+    <div class="cv-page-body container">
+      <iframe class="cv-frame" src="assets/Ahmad-Ishaq-CV.pdf" title="Ahmad Ishaq CV Preview"></iframe>
+      <p class="cv-fallback">Can't see the preview? <a href="assets/Ahmad-Ishaq-CV.pdf" target="_blank" rel="noopener">Open the CV PDF directly</a>.</p>
+    </div>
+  </div>
+
+  <script>
+    /* MY CV screen: open/close the CV preview overlay without leaving the page. */
+    (function () {
+      var cvPage = document.getElementById('cv-page');
+      var openBtn = document.getElementById('my-cv-btn');
+      var backBtn = document.getElementById('cv-back-btn');
+      if (!cvPage || !openBtn) return;
+
+      function openCV() {
+        cvPage.hidden = false;
+        cvPage.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('cv-page-active');
+        if (backBtn) backBtn.focus();
+      }
+
+      function closeCV() {
+        cvPage.hidden = true;
+        cvPage.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('cv-page-active');
+        openBtn.focus();
+      }
+
+      openBtn.addEventListener('click', openCV);
+      if (backBtn) backBtn.addEventListener('click', closeCV);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !cvPage.hidden) closeCV();
+      });
+    })();
+  </script>
   <script>
     /* Seamless projects marquee: the cards are repeated (hidden from assistive
-       tech and keyboard focus) so the loop never shows an empty gap. */
+       tech and keyboard focus) so the auto-scroll loop never shows a gap.
+       The container itself stays overflow-x: auto, so the user can also
+       scroll or drag through the row manually at any time. */
     (function () {
       var track = document.querySelector('.projects-track');
       if (!track || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -475,12 +527,11 @@
       function build() {
         clones.forEach(function (c) { c.remove(); });
         clones = [];
-        track.classList.add('is-looping');
 
         var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
         var first = cards[0], last = cards[cards.length - 1];
         var setWidth = last.offsetLeft + last.offsetWidth - first.offsetLeft + gap;
-        var extraSets = Math.ceil(track.parentElement.clientWidth / setWidth);
+        var extraSets = Math.ceil(track.parentElement.clientWidth / setWidth) + 1;
 
         for (var i = 0; i < extraSets; i++) {
           cards.forEach(function (card) {
@@ -504,5 +555,6 @@
       build();
     })();
   </script>
+
 </body>
 </html>

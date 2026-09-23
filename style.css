@@ -62,12 +62,6 @@ a:focus-visible, label:focus-visible {
   * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
 
-/* Reduced motion: no marquee, the cards become a swipeable row */
-@media (prefers-reduced-motion: reduce) {
-  .projects-marquee { overflow-x: auto; }
-  .projects-track { animation: none !important; padding-left: 0; }
-}
-
 /* ---------- 3. Header / Nav (floating pill) ---------- */
 .site-header {
   position: sticky;
@@ -195,6 +189,13 @@ a:focus-visible, label:focus-visible {
   border-color: var(--card-border);
   color: var(--text);
   background: var(--card);
+}
+
+button.btn {
+  cursor: pointer;
+  font-family: inherit;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 /* ---------- 5. Hero ---------- */
@@ -437,56 +438,76 @@ a:focus-visible, label:focus-visible {
 }
 
 /* ---------- 11. Projects ---------- */
-/* Horizontal marquee: one copy of the cards, no duplicated content.
-   The track's left padding (% of the viewport width) starts the cards
-   just off the right edge; they then travel fully out the left edge. */
+/* Marquee + manual scroll: the track auto-scrolls (paused on hover/focus),
+   while the container stays horizontally scrollable via a visible
+   scrollbar, trackpad, or drag, so the user can override the motion
+   at any time. */
 .projects-marquee {
-  overflow: hidden;
-  padding: 10px 0;
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
-          mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px 0 22px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--card-border) transparent;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 3%, #000 97%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 3%, #000 97%, transparent);
 }
+
+.projects-marquee::-webkit-scrollbar { height: 8px; }
+.projects-marquee::-webkit-scrollbar-track { background: transparent; }
+.projects-marquee::-webkit-scrollbar-thumb {
+  background: var(--card-border);
+  border-radius: 999px;
+}
+.projects-marquee::-webkit-scrollbar-thumb:hover { background: var(--text-faint); }
 
 .projects-track {
   display: flex;
   gap: 20px;
   width: max-content;
-  padding-left: 100%;
-  animation: marquee 40s linear infinite;
+  animation: marquee-loop 40s linear infinite;
+  animation-duration: var(--marquee-duration, 40s);
   will-change: transform;
 }
 
-/* Seamless mode (set by the small script at the end of index.html) */
-.projects-track.is-looping {
-  padding-left: 0;
-  animation-name: marquee-loop;
-  animation-duration: var(--marquee-duration, 40s);
-}
-
 .projects-marquee:hover .projects-track,
-.projects-marquee:focus-within .projects-track {
+.projects-marquee:focus-within .projects-track,
+.projects-marquee:active .projects-track {
   animation-play-state: paused;
 }
 
 @keyframes marquee-loop {
   from { transform: translateX(0); }
-  to   { transform: translateX(var(--marquee-shift)); }
-}
-
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-100%); }
+  to   { transform: translateX(var(--marquee-shift, -50%)); }
 }
 
 .project-card {
-  flex: 0 0 clamp(280px, 32vw, 400px);
+  flex: 0 0 clamp(320px, 40vw, 460px);
   padding: 28px;
   background: var(--card);
   border: 1px solid var(--card-border);
   border-radius: var(--radius-lg);
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.2s ease, transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-.project-card:hover { transform: translateY(-4px); }
+.project-card:hover {
+  transform: translateY(-4px) scale(1.035);
+  position: relative;
+  z-index: 2;
+}
+
+/* Square image frame — the photo is never cropped: object-fit: contain
+   shows the whole screenshot, letterboxed on a white backing that
+   matches the screenshots' own white backgrounds. */
+.project-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  background: #fff;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--card-border);
+  margin-bottom: 16px;
+  padding: 6px;
+  display: block;
+}
 
 .project-title {
   font-family: var(--font-display);
@@ -808,7 +829,84 @@ a:focus-visible, label:focus-visible {
 
 
 /* ============================================================
-   16. Responsive breakpoints
+   16. CV preview screen
+   ============================================================ */
+body.cv-page-active { overflow: hidden; }
+
+.cv-page {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.cv-page[hidden] { display: none; }
+
+.cv-page-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: rgba(11, 11, 12, 0.92);
+  backdrop-filter: saturate(180%) blur(10px);
+  border-bottom: 1px solid var(--card-border);
+  padding: 18px 0;
+}
+
+.cv-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cv-page-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.cv-header-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cv-page-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 24px 56px;
+  gap: 16px;
+}
+
+.cv-frame {
+  width: 100%;
+  max-width: 900px;
+  flex: 1;
+  min-height: 70vh;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  background: #fff;
+}
+
+.cv-fallback {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  text-align: center;
+}
+.cv-fallback a { color: var(--accent); text-decoration: underline; }
+
+@media (max-width: 560px) {
+  .cv-header-inner { flex-direction: column; align-items: flex-start; }
+  .cv-frame { min-height: 60vh; }
+}
+
+/* ============================================================
+   17. Responsive breakpoints
    ============================================================ */
 @media (max-width: 960px) {
   .hero-inner { grid-template-columns: 1fr; }
@@ -900,7 +998,7 @@ a:focus-visible, label:focus-visible {
   .stats-row { gap: 28px; }
   .stat-num { font-size: 1.6rem; }
   .contact-grid { grid-template-columns: 1fr; }
-  .project-card { flex-basis: 280px; padding: 22px; }
+  .project-card { flex-basis: 300px; padding: 22px; }
   .section { padding: 64px 0; }
   .hero { padding: 56px 0 0; }
   .hero + .section { padding-top: 40px; }
